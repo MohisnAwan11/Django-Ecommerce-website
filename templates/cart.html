@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Your Cart{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style3.css' %}">
+
+
+{% endblock %}
+{% block content %}
+<div class="cart-wrapper">
+    <h2>Your Shopping Cart 🛒</h2>
+    <table class="cart-table">
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in products %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>PKR {{ item.total_price|floatformat:0 }}</td>
+            <td>
+                <form method="POST" action="{% url 'update_cart' item.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" name="action" value="increment" class="qty-btn">+</button>
+                    <button type="submit" name="action" value="decrement" class="qty-btn">−</button>
+                    <button type="submit" name="action" value="remove" class="remove-btn">Remove</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+   <div class="cart-bottom">
+    
+       <div class="cart-total">
+        <h3>Total: PKR {{ total_price|floatformat:0 }}</h3>
+    </div>
+   
+    <a class="checkout-link" href="{% url 'checkout' %}" >Proceed to Checkout</a>
+</div>
+
+
+    <!-- <div class="cart-total">
+        <h3>Total: PKR {{ total_price|floatformat:0 }}</h3>
+    </div> -->
+</div>
+{% endblock %}

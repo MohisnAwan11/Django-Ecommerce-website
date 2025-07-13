@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Payment Successful{% endblock %}
+{% block content %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style5.css' %}">
+<style>
+.back-home-btn {
+    display: inline-block;
+    margin-top: 25px;
+    background-color: #1e3799;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.back-home-btn:hover {
+    background-color: #0a3d62;
+}
+
+/* Optional mobile tweak */
+@media screen and (max-width: 600px) {
+    .back-home-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 15px;
+    }
+}
+
+</style>
+
+{% endblock %}
+<div class="checkout-container">
+    <h2>✅ Payment Successful</h2>
+    <p>Your order #{{ order.id }} has been placed.</p>
+    <a href="{% url 'home' %}" class="back-home-btn">Back to Home</a>
+</div>
+{% endblock %}

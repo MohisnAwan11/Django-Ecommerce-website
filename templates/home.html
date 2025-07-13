@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home | ShopZone{% endblock %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 style=" text-align:center;">Welcome to ShopZone {{request.user.username}}</h1>
+
+<h1 class="heading">Latest Products</h1>
+
+{% if request.GET.q %}
+    <p style="text-align:center; font-weight:600; margin-bottom: 20px;">
+        Search results for "{{ request.GET.q }}"
+    </p>
+{% endif %}
+
+{% if products %}
+<div class="product-grid">
+    {% for product in products %}
+    <div class="product-card">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <img src="{% static 'images/default.jpg' %}" alt="No image available">
+        {% endif %}
+        
+        <h3>{{ product.name }}</h3>
+        <p class="price">PKR {{ product.price }}</p>
+        <p class="desc">{{ product.description|truncatechars:100 }}</p>
+        <a href="{% url 'product_detail' product.pk %}" class="btn">View</a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+    <p style="text-align:center; color: crimson;">No products found.</p>
+{% endif %}
+
+{% endblock %}

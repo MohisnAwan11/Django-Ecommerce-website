@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} | ShopZone{% endblock %}
+
+{%block extra_css%}
+
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+{% endblock %}
+
+{% block scripts %}
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="{% static 'js/script1.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="product-detail-wrapper">
+<div class="product-detail-container">
+    <div class="product-detail-image">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    </div>
+    <div class="product-detail-info">
+        <h2>{{ product.name }}</h2>
+        <p class="price">PKR {{ product.price }}</p>
+        <p class="desc">{{ product.description }}</p>
+        <a href="{% url 'add_to_cart' product.pk %}" class="btn add-to-cart">Add to Cart 🛒</a>
+
+    </div>
+</div>
+</div>
+{% endblock %}

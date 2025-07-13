@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My eCommerce{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% block extra_css%}
+
+    {% endblock %}
+</head>
+<body>
+
+    <!-- Navbar -->
+   <nav class="navbar">
+    <a class = "logo-link" href="{% url 'home' %}"  ><div class="logo">ShopZone</div></a>
+    <form method="GET" action="{% url 'home' %}" class="search-form">
+    <input type="text" class="search-input" name="q" placeholder="Search products..." value="{{ request.GET.q }}">
+    <button type="submit">🔍</button>
+</form>
+
+    
+
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        {% if request.user.is_authenticated %}
+<li><a href="{% url 'my_orders' %}">My Orders</a></li>
+{% endif %}
+
+        {% if request.user.is_authenticated %}
+    {% with request.user.cart.total_items as count %}
+        <li><a href="{% url 'cart' %}">Cart ({{ count }})</a></li>
+    {% endwith %}
+{% else %}
+    <li><a href="{% url 'cart' %}">Cart</a></li>
+{% endif %}
+
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+
+    <!-- Main content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+    {% block scripts %}
+
+    {% endblock %}
+</body>
+</html>

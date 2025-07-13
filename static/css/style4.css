@@ -1,0 +1,81 @@
+ 
+.form-wrapper {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.form-wrapper h2 {
+    text-align: center;
+    color: #0a3d62;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #1e3799;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.form-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: linear-gradient(to right, #0a3d62, #1e3799);
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.form-btn:hover {
+    background: linear-gradient(to right, #1e3799, #0a3d62);
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.form-footer a {
+    color: #1e3799;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Make it responsive */
+@media screen and (max-width: 500px) {
+    .form-wrapper {
+        margin: 30px 15px;
+        padding: 20px;
+    }
+}
+
+

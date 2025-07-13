@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0a3d62;
+    padding: 15px 30px;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background 0.3s ease-in-out;
+}
+
+.navbar:hover {
+    background: #1e3799;
+}
+
+
+.logo-link {
+  text-decoration: none;  /* Removes underline */
+  color: inherit;         /* Inherits text color from the parent */
+  display: inline-block;  /* Allows it to wrap block elements like <h1> */
+}
+
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #ffdd59;
+}
+
+/*hamburger menu for mobile */
+
+/* Hamburger Icon */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.3s ease;
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #0a3d62;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+/* search bar styling */
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 5px;
+}
+
+.search-form input {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    min-width: 180px;
+}
+
+.search-form button {
+    padding: 6px 12px;
+    background-color: #1e3799;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #0a3d62;
+}
+
+@media (max-width: 768px) {
+    .search-form {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}

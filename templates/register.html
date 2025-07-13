@@ -1,0 +1,40 @@
+
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Register | ShopZone{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/style4.css' %}">
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/script2.js' %}"></script>
+
+
+{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+    <h2>Create Your Account</h2>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field }}
+                {% if field.errors %}
+                    <p class="error">{{ field.errors.0 }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn form-btn">Register</button>
+    </form>
+    <p class="form-footer">
+        Already have an account? <a href="{% url 'login' %}">Login here</a>
+    </p>
+</div>
+{% endblock %}
